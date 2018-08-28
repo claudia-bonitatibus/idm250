@@ -23,6 +23,7 @@ html{font-size:100%;}
 }
 
 body{
+	margin: 0;
 	background-color:#ffffff;
 	overflow-y: scroll; 
 	overflow-x:hidden;
@@ -338,7 +339,7 @@ button:hover{
 }
 
 .paddedItem{
-	padding: 2rem 0;
+	padding: .5rem 0;
 }
 
 /***** HOME PAGE STYLE *****/
@@ -402,7 +403,8 @@ button:hover{
 }
 
 .displayImage img{
-	width: 80%;
+	width: 170px;
+	height: auto;
 }
 
 .displayImage{
