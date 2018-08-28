@@ -7,7 +7,7 @@ get_header(); ?>
 		<header>
 			<div class="headerText">
 				<h1>
-					Heading 1
+					<?php get_title();?>
 				</h1>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -17,18 +17,7 @@ get_header(); ?>
 		</header>
 		<div class="bodyWithSidebar">
 			<aside>
-				<h6>Recent Comments</h6>
-				<p>This is the third comment in the list</p>
-				<p>This is the second comment in the list</p>
-				<p>This is the first comment in the list</p>
-				<h6>Archives</h6>
-				<p>sub-item 1</p>
-				<p>sub-item 2</p>
-				<p>sub-item 3</p>
-				<h6>Wiki</h6>
-				<h6>User Interface Design</h6> 
-				<h6>Support</h6>
-
+				<?php get_sidebar();?>
 			</aside>
 			<main class="mainWithSidebar">
 				<h2>
@@ -83,4 +72,4 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-<?php require "footer.php"; ?>
+<?get_footer(); ?>
