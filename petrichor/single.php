@@ -15,15 +15,21 @@ get_header(); ?>
 				</div>
 				<div class="textContent">
 					<h3>
-						Ran Triadic Tracing
+						<?php the_title();?>
 					</h3>
 					<h6>
-						Created in the Sping of 2017
+						Created in the Spring of 2017
 					</h6>
 					<p>
-						This composition is a vector tracing of a frame from Kurosawa's film Ran, showing depth of field using a range in saturation of a triadic scheme. The frame is divided into foreground, middleground, and background both by color and level of saturation, with the warmer more saturated colors in the foreground and the cooler less saturated colors in the background. This gives the illusion of three dimensionality by activating the foreground and having it recede into the mountains in the background.
-						<br>
-						This scene tracing was made using the pen tool in Illustrator.  
+						<?php if (have_posts()): ?>
+			            <?php // TO SHOW THE PAGE CONTENTS?>
+			            <?php while (have_posts()) : the_post(); ?> <!--Because the_content() works only inside a WP Loop -->
+			            <?php the_content(); ?> <!-- Page Content (WYSIWYG Field) -->
+			            <?php endwhile; //resetting the page loop?>
+			            <?php wp_reset_query(); //resetting the page query?>
+			        	<?php else: ?>
+			          		<h2>Sorry, No Post Found</h2>
+			        	<?php endif; ?>
 					</p>
 				</div>
 <?php get_footer(); ?>
