@@ -6,6 +6,13 @@
  *
  * @link https://codex.wordpress.org/Class_Reference/WP_Query
 */
+$arg = [
+  'post_type'     => 'post',
+  'post_status'   => 'publish',
+  'posts_per_page'=> 15
+];
+$posts = new WP_Query($arg);
+
 get_header(); ?>
 		<header class="secondaryHeader">
 			<div class="secondaryHeaderText">
@@ -13,90 +20,34 @@ get_header(); ?>
 			</div>
 		</header>
 		<main>
+
 			<div class="archiveGrid">
+			<?php if ($posts->have_posts()) : ?>
+            <?php while ($posts->have_posts()) : $posts->the_post(); ?>
+
 				<div class="portfolioItem">
 					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-philadelphia-streets-redesign.jpg">
+						<!-- DYNAMIC THUMBNAIL -->
+						<?php
+						if (has_post_thumbnail()): ?>
+                    	<?php the_post_thumbnail();?>
+                  		<?php else: ?>
+                    	<img src="https://placehold.it/150x150" alt="">
+                  		<?php endif; ?>
 					</div>
 					<div class="displayText">
-						<h4>Philadelphia Streets Redesign</h4>
-						<h6>Visually oriented redesign of the recycling portion of 
-						Philadelphia Streets' website. </h6>
+						<!-- DYNAMIC LINK -->
+						<a href="<?php the_permalink(); ?>"><h4><?php the_title()?></h4></a>
+						<!-- DYNAMIC EXCERPT -->
+						<h6><?php the_excerpt(); ?></h6>
 					</div>
 				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-painted-archway.jpg">
-					</div>
-					<div class="displayText">
-						<h4> Painted Archway </h4>
-						<h6> Watercolor painting of Via Giulia in Rome, Italy. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-layers-and-opacities.png">
-					</div>
-					<div class="displayText">
-						<h4> Layers and Opacities </h4>
-						<h6>GIF designed to depict the interactions between different shapes with varying opacities.  </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-philadelphia-streets-redesign.jpg">
-					</div>
-					<div class="displayText">
-						<h4>Philadelphia Streets Redesign</h4>
-						<h6>Visually oriented redesign of the recycling portion of 
-						Philadelphia Streets' website. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-painted-archway.jpg">
-					</div>
-					<div class="displayText">
-						<h4> Painted Archway </h4>
-						<h6> Watercolor painting of Via Giulia in Rome, Italy. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-layers-and-opacities.png">
-					</div>
-					<div class="displayText">
-						<h4> Layers and Opacities </h4>
-						<h6>GIF designed to depict the interactions between different shapes with varying opacities.  </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-philadelphia-streets-redesign.jpg">
-					</div>
-					<div class="displayText">
-						<h4>Philadelphia Streets Redesign</h4>
-						<h6>Visually oriented redesign of the recycling portion of 
-						Philadelphia Streets' website. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-painted-archway.jpg">
-					</div>
-					<div class="displayText">
-						<h4> Painted Archway </h4>
-						<h6> Watercolor painting of Via Giulia in Rome, Italy. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-layers-and-opacities.png">
-					</div>
-					<div class="displayText">
-						<h4> Layers and Opacities </h4>
-						<h6>GIF designed to depict the interactions between different shapes with varying opacities.  </h6>
-					</div>
-				</div>
+			<?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
+          	<?php else : ?>
+	            <p>
+	              <?php echo 'Sorry, no posts matched your criteria.'; ?>
+	            </p>
+        	<?php endif; ?>
 			</div>
 <?php get_footer(); ?>
