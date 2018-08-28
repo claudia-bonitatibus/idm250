@@ -3,40 +3,27 @@
 Template Name: General
 */
 get_header(); ?>
-		<header>
+<header>
 			<div class="headerText">
 				<h1>
 					<?php the_title();?>
 				</h1>
 				<p>
-					<?php the_content();?> 
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 				</p>
 			</div>
 		</header>
 		<main>
-				<h2>
-					Heading 2
-				</h2>
-				<h3>
-					Heading 3
-				</h3>
-				<h4>
-					Heading 4
-				</h4>
-				<h5>
-					Heading 5
-				</h5>
-				<h6>
-					Heading 6
-				</h6>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-					<i class="quote">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</i>
-				</p>
-				<p class="blockQuote">
-					"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." 
-				</p>
+			<?php if (have_posts()): ?>
+            <?php // TO SHOW THE PAGE CONTENTS?>
+            <?php while (have_posts()) : the_post(); ?> <!--Because the_content() works only inside a WP Loop -->
+              <?php the_content(); ?> <!-- Page Content (WYSIWYG Field) -->
+            <?php endwhile; //resetting the page loop?>
+            <?php wp_reset_query(); //resetting the page query?>
+        	<?php else: ?>
+          	<h2>Sorry, No Post Found</h2>
+        	<?php endif; ?>
 				<div class="paddedItem">
 					<a href="home.html" class="inactive">
 						Inactive Link
@@ -66,4 +53,4 @@ get_header(); ?>
 					</div>
 				</div>
 			</div>
-<?php require "footer.php"; ?>
+<?get_footer(); ?>
