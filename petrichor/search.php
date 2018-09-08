@@ -1,105 +1,42 @@
 <?php 
-/*
-Template Name: Search Results
-*/
+$searched_string = $_GET['s'];
 get_header(); ?>
-		<div class="searchInfo">
-				<h6>
-					Showing 8 results for “digital art”
-				</h6>
+
+
+<div class="searchInfo">
+	<h6>
+		Showing results for “<?php echo $searched_string;?>”
+	</h6>
+</div>
+<main>
+	<div class="archiveGrid">
+	<?php if (have_posts()) : ?>
+    <?php while (have_posts()) : the_post(); ?>
+
+		<div class="portfolioItem">
+			<div class="displayImage">
+				<!-- DYNAMIC THUMBNAIL -->
+				<?php
+				if (has_post_thumbnail()): ?>
+            	<?php the_post_thumbnail();?>
+          		<?php else: ?>
+            	<img src="https://placehold.it/150x150" alt="">
+          		<?php endif; ?>
 			</div>
-		<main>
-			<div class="archiveGrid">
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-philadelphia-streets-redesign.jpg">
-					</div>
-					<div class="displayText">
-						<a href="single.html">
-							<h4>Philadelphia Streets Redesign</h4>
-						</a>
-						<h6>Visually oriented redesign of the recycling portion of 
-						Philadelphia Streets' website. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-painted-archway.jpg">
-					</div>
-					<div class="displayText">
-						<a href="single.html">
-							<h4> Painted Archway </h4>
-						</a>
-						<h6> Watercolor painting of Via Giulia in Rome, Italy. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-layers-and-opacities.png">
-					</div>
-					<div class="displayText">
-						<a href="single.html">
-							<h4> Layers and Opacities </h4>
-						</a>
-						<h6>GIF designed to depict the interactions between different shapes with varying opacities.  </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-philadelphia-streets-redesign.jpg">
-					</div>
-					<div class="displayText">
-						<a href="single.html">
-							<h4>Philadelphia Streets Redesign</h4>
-						</a>
-						<h6>Visually oriented redesign of the recycling portion of 
-						Philadelphia Streets' website. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-painted-archway.jpg">
-					</div>
-					<div class="displayText">
-						<a href="single.html">
-							<h4> Painted Archway </h4>
-						</a>
-						<h6> Watercolor painting of Via Giulia in Rome, Italy. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-layers-and-opacities.png">
-					</div>
-					<div class="displayText">
-						<a href="single.html">
-							<h4> Layers and Opacities </h4>
-						</a>
-						<h6>GIF designed to depict the interactions between different shapes with varying opacities.  </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-philadelphia-streets-redesign.jpg">
-					</div>
-					<div class="displayText">
-						<a href="single.html">
-							<h4>Philadelphia Streets Redesign</h4>
-						</a>
-						<h6>Visually oriented redesign of the recycling portion of 
-						Philadelphia Streets' website. </h6>
-					</div>
-				</div>
-				<div class="portfolioItem">
-					<div class="displayImage">
-						<img src="<?php echo get_template_directory_uri();?>/assets/large-display/large-display-painted-archway.jpg">
-					</div>
-					<div class="displayText">
-						<a href="single.html">
-							<h4> Painted Archway </h4>
-						</a>
-						<h6> Watercolor painting of Via Giulia in Rome, Italy. </h6>
-					</div>
-				</div>
+			<div class="displayText">
+				<!-- DYNAMIC LINK -->
+				<a href="<?php the_permalink(); ?>"><h4><?php the_title()?></h4></a>
+				<!-- DYNAMIC EXCERPT -->
+				<h6><?php echo get_field('caption'); ?></h6>
 			</div>
+		</div>
+	<?php endwhile; ?>
+    <?php wp_reset_postdata(); ?>
+  	<?php else : ?>
+        <p>
+          <?php echo 'Sorry, no posts matched your criteria.'; ?>
+        </p>
+	<?php endif; ?>
+	</div>
+ </main>
 <?php get_footer(); ?>

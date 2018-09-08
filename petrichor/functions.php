@@ -71,3 +71,14 @@ add_theme_support('post-thumbnails');
 add_filter('default_page_template_title', function () {
     return __('Full Width (General Styles)');
 });
+
+// ignore pages in search
+if (!is_admin()) {
+function wpb_search_filter($query) {
+if ($query->is_search) {
+$query->set('post_type', 'post');
+}
+return $query;
+}
+add_filter('pre_get_posts','wpb_search_filter');
+}

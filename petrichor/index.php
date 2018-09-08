@@ -126,9 +126,10 @@ get_header(); ?>
 							Supervised and prepared potential students for the interview process 
 						</li>
 						<li>
-							Assessed combatibility of potential students to Science Leadership Academy’s environment
+							Assessed compatibility of potential students to Science Leadership Academy’s environment
 						</li>
 					</ul>
 				</div>
 			</div>
+		</main>
 <?php get_footer(); ?>

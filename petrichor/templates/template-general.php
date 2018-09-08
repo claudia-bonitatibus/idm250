@@ -1,4 +1,7 @@
 <?php 
+/*
+Template Name: General
+*/
 get_header(); ?>
 		<header>
 			<div class="headerText">

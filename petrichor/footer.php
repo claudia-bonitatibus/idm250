@@ -1,4 +1,3 @@
-		</main>
 		<footer>
 			<a href="https://www.facebook.com/claudia.bonita.50" target="blank">
 				<img src=<?php echo get_template_directory_uri();?>/assets/facebook-icon.svg class="contact">
@@ -13,6 +12,6 @@
 				<img src= <?php echo get_template_directory_uri();?>/assets/mail-icon.svg alt="email" class="contact">
 			</a>
 		</footer>
-		<script src="<?php echo get_template_directory_uri();?>/main.js"></script>
+		<?php wp_footer();?>
 	</body>
 </html>

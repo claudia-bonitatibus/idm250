@@ -14,4 +14,6 @@
 						The page that you are looking for could not be found in our database.
 					</p>
 				</div>
+			</div>
+		 </main>
 <?php get_footer(); ?>
