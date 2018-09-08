@@ -5,6 +5,7 @@
 		<meta name="viewport"
 		content = "width= device-width,
 		initial-scale= 1.0"
+		<?php wp_enqueue_style("style-sheet.css");?>
 	>
 	<title><?php the_title();?></title>
 	<!-- Open Wordpress Header Code -->

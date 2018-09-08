@@ -214,11 +214,11 @@ nav{
 	display: inline-flex;
 	justify-content: flex-end;
 	align-content: space-between;
-	width: 100%;
+	width: 50%;
 	position: relative;
-	top: -8.75vh;
+	top: -2.75vh;
 	padding-bottom: 1vh;
-	right: 1rem;
+	right: -38.5vw;
 	height:auto;
 }
 
@@ -563,7 +563,9 @@ button:hover{
 	}
 
 	.searchBar{
-		top: -7.75vh;
+		position: absolute;
+		top: -.75vh;
+		right: 1rem;
 	}
 
 	.aboutMe{
